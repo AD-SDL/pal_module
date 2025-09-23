@@ -1,0 +1,6 @@
+madsci.node_modules
+fastapi>=0.103.2
+uvicorn>=0.21.1
+pytest
+numpy
+paho-mqtt

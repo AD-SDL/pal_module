@@ -1,6 +1,6 @@
 
 
-from MADSci.src.madsci_common.madsci.common.types.base_types import BaseModel
+from madsci.common.types.base_types import BaseModel
 from typing import Literal
 from pydantic import Field
 from pydantic.types import Discriminator, Tag
@@ -221,7 +221,6 @@ PALActions = Annotated[
         Annotated[PALTransfer, Tag("transfer")],
         Annotated[PALDelay, Tag("delay")],
         Annotated[PALDispense, Tag("dispense")],
-        Annotated[PALChaser, Tag("chaser")],
         Annotated[PALPause, Tag("pause")],
         Annotated[PALStir, Tag("stir")],
         Annotated[PALMove, Tag("move")],

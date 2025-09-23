@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+src/pal_interface.py
+src/pal_module.py
+src/pal_module.egg-info/PKG-INFO
+src/pal_module.egg-info/SOURCES.txt
+src/pal_module.egg-info/dependency_links.txt
+src/pal_module.egg-info/requires.txt
+src/pal_module.egg-info/top_level.txt

@@ -1,0 +1,20 @@
+Metadata-Version: 2.4
+Name: pal_module
+Version: 0.3.0
+Summary: Software for automatting a Vention Rails
+Author-email: "Ryan D. Lewis" <ryan.lewis@anl.gov>, Rafael Vescovi <ravescovi@anl.gov>, Doga Ozgulbas <dozgulbas@anl.gov>, Abe Stroka <astroka@anl.gov>, Kyle Hippe <khippe@anl.gov>, Tobias Ginsburg <tginsburg@anl.gov>
+License: MIT
+Project-URL: homepage, https://github.com/AD-SDL/vention_rail_module
+Requires-Python: >=3.8.1
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: madsci.node_modules
+Requires-Dist: fastapi>=0.103.2
+Requires-Dist: uvicorn>=0.21.1
+Requires-Dist: pytest
+Requires-Dist: numpy
+Requires-Dist: paho-mqtt
+Dynamic: license-file
+
+# pal_module
+A MADSci module to control the PAL robot

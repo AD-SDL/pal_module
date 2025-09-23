@@ -3,25 +3,25 @@ import json
 from pathlib import Path
 from typing import Annotated, Any, Optional
 
-from MADSci.src.madsci_common.madsci.common.types.action_types import (
+from madsci.common.types.action_types import (
     ActionResult,
     ActionSucceeded,
     ActionFailed
 )
-from MADSci.src.madsci_common.madsci.common.types.admin_command_types import AdminCommandResponse
-from MADSci.src.madsci_common.madsci.common.types.node_types import RestNodeConfig
-from MADSci.src.madsci_node_module.madsci.node_module.helpers import action
-from MADSci.src.madsci_node_module.madsci.node_module.rest_node_module import RestNode
-from MADSci.src.madsci_common.madsci.common.types.auth_types import OwnershipInfo
-from MADSci.src.madsci_common.madsci.common.types.resource_types.definitions import (
+from madsci.common.types.admin_command_types import AdminCommandResponse
+from madsci.common.types.node_types import RestNodeConfig
+from madsci.node_module.helpers import action
+from madsci.node_module.rest_node_module import RestNode
+from madsci.common.types.auth_types import OwnershipInfo
+from madsci.common.types.resource_types.definitions import (
     ContainerResourceDefinition,
     SlotResourceDefinition,
 )
 
-from MADSci.src.madsci_common.madsci.common.types.resource_types import ContinuousConsumable
-from MADSci.src.madsci_common.madsci.common.types.resource_types.definitions import ContinuousConsumableResourceDefinition
+from madsci.common.types.resource_types import ContinuousConsumable
+from madsci.common.types.resource_types.definitions import ContinuousConsumableResourceDefinition
 from PAL_protocol_types import PALtray, PALProtocol, PALAction
-from MADSci.src.madsci_client.madsci.client.resource_client import ResourceClient
+from madsci.client.resource_client import ResourceClient
 import os
 from pathlib import Path
 from log_parsing import read_logs, add_timestamps

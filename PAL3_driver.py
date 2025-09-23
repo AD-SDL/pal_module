@@ -9,11 +9,12 @@ from datetime import datetime
 import smtplib
 import cv2 # for capturing images using OpenCV
 import threading, keyboard 
+clr.AddReference("System")
 from System import Int32
 
 user = os.getlogin()
-sys.path.append(os.path.abspath("C:/Users/%s/Dropbox/Instruments cloud/Robotics/PAL3 System/Machine Vision liquids/HeinSight" % user))
-from classifier import MV_LLE
+# sys.path.append(os.path.abspath("C:/Users/%s/Dropbox/Instruments cloud/Robotics/PAL3 System/Machine Vision liquids/HeinSight" % user))
+# from classifier import MV_LLE
 
 sys.path.append(os.path.abspath("C:/Users/%s/Dropbox/Instruments cloud/Robotics/Unchained BK/AS Scripts/API Scripts" % user))
 from CustomTracker import CustomTracker
@@ -109,8 +110,8 @@ class PALImage:
             if ret: self.code = code[0] # first QR code 
       return None 
   
-    def start_MV(self):
-        self.ut = MV_LLE()  
+    # def start_MV(self):
+    #     self.ut = MV_LLE()  
         
     def flash_image(self, win, im):
         cv2.imshow(win, cv2.resize(im, (640, 480)))
