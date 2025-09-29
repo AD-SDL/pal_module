@@ -26,8 +26,9 @@ import os
 from pathlib import Path
 from log_parsing import read_logs, add_timestamps
 import PAL3_driver
+import time
 
-pal = PAL3_driver.PALService()
+
 
 class PALConfig(RestNodeConfig):
     """Configuration for a PAL Node"""
@@ -37,58 +38,56 @@ class PALNode(RestNode):
 
     config_model = PALConfig()
     def startup_handler(self):
+        self.pal = PAL3_driver.PALService()
+        self.pal.std_start("test")
         pass
 
-def execute_action(action: PALAction):
-        if action.action_type == "start":
-            pal.std_start(action.name)
-        elif action.action_type == "finish":
-            pal.finish
-        elif action.action_type == "home":
-            pal.safe_home
-        elif action.action_type == "wash":
-            pal.clean_wash
-        elif action.action_type == "transfer":
-            kwargs = {"vial_from" : action.source_location,
-                      "vial_to" : action.target_location,
-                      "volume" : action.volume,
-                      "chaser" : action.chaser
-            }
-            pal.quick_transfer(**kwargs)
-        elif action.action_type == "delay":
-            time.sleep(action.delay)
-        elif action.action_type == "dispense":
-            pal.safe_move2vial(action.tray, action.slot, action.position)
-            pal.session.Execute(penetrate)
-            pal.eh.EmptySyringe()
-        elif action.action_type == "withdraw":
-            kwargs = {"vial_from" : action.source_cell,
-                      "vial_to" : action.target_cell,
-                      "volume" : action.volume,
-                      "chaser" : action.chaser
-            }
-            pal.quick_withdraw
-        elif action.action_type == "pause":
-            pal.pause = true
-        elif action.action_type == "stir":
-            pal.set_vortex(action.speed, action.time)
-        elif action.action_type == "move":
-            pal.safe_move2vial(action.tray, action.slot, action.position)
-
-def run_protocol(
-        self,
-        protocol: Path,
-    ) -> ActionResult:
-        with open(protocol) as f:
-            protocol = PALProtocol.model_validate(json.load(f))
-        for action in protocol.actions:
-            pal.execute_action(action)
-        if self.resource_client:
-            protocol.model_dump()
+    def execute_action(self, action: PALAction):
+            if action.action_type == "start":
+                self.pal.std_start(action.name)
+            elif action.action_type == "finish":
+                self.pal.finish()
+            elif action.action_type == "home":
+                self.pal.safe_home()
+            elif action.action_type == "wash":
+                self.pal.clean_wash()
+            elif action.action_type == "transfer":
+                kwargs = {"vial_from" : action.source_location,
+                        "vial_to" : action.target_location,
+                        "volume" : action.volume,
+                        "chaser" : action.chaser
+                }
+                pal.quick_transfer(**kwargs)
+            elif action.action_type == "delay":
+                time.sleep(action.delay)
+            elif action.action_type == "dispense":
+                self.pal.safe_move2vial(action.tray, action.slot, action.position)
+                self.pal.session.Execute(penetrate)
+                self.pal.eh.EmptySyringe()
+            elif action.action_type == "withdraw":
+                kwargs = {"vial_from" : action.source_cell,
+                        "vial_to" : action.target_cell,
+                        "volume" : action.volume,
+                        "chaser" : action.chaser
+                }
+                self.pal.quick_withdraw(**kwargs)
+            elif action.action_type == "pause":
+                self.pal.pause = true
+            elif action.action_type == "stir":
+                self.pal.set_vortex(action.speed, action.time)
+            elif action.action_type == "move":
+                self.pal.safe_move2vial(action.tray, action.slot, action.position)
+    @action
+    def run_protocol(
+            self,
+            protocol: Path,
+        ) -> ActionResult:
+            with open(protocol) as f:
+                protocol = PALProtocol.model_validate(json.load(f))
+            for action in protocol.actions:
+                self.execute_action(action)
             return ActionSucceeded()
-        else: 
-          return ActionFailed()
-
+           
 
 if __name__ == "__main__":
     pal_node = PALNode()

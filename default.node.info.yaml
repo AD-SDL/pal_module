@@ -22,14 +22,29 @@ capabilities:
   - shutdown
   - unlock
 node_url: null
-actions: {}
+actions:
+  run_protocol:
+    name: run_protocol
+    description: ''
+    args: {}
+    locations: {}
+    files:
+      protocol:
+        name: protocol
+        description: ''
+        argument_type: file
+        required: true
+        default: null
+    results: {}
+    blocking: false
+    asynchronous: true
 config:
   node_definition: default.node.yaml
   node_info_path: null
   update_node_files: true
   status_update_interval: 2.0
   state_update_interval: 2.0
-  node_url: http://127.0.0.1:2000/
+  node_url: http://csi0365887.cse.anl.gov:2005/
   uvicorn_kwargs: {}
 config_schema:
   description: Default Configuration for a MADSci Node that communicates over REST.

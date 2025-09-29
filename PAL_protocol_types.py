@@ -202,15 +202,15 @@ class PALMove(PALAction):
         description="The type of the action",
         default="move"
         )
-    tray: str = Field(
+    tray: int = Field(
         title="Target tray",
         description="The target tray for the move"
         )
-    slot: str = Field(
+    slot: int = Field(
         title="Target slot",
         description="The target slot for the move"
         )
-    position: str = Field(
+    position: int = Field(
         title="Target vial",
         description="The target vial for the move"
         )

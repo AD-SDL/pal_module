@@ -1,0 +1,1 @@
+{"name": "test", "units": "ul", "trays": {"ICP_rack": {"name": "ICP_rack", "type": "Rack 6x15 ICP robotic", "position": "ICP Rack", "cells": 2, "source": false}}, "actions": [{"action_type": "delay", "delay": 2.0}, {"action_type": "home"}, {"action_type": "move", "tray": 1, "slot": 1, "position": 1}, {"action_type": "home"}]}

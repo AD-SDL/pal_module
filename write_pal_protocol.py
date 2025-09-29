@@ -35,7 +35,7 @@ def generate_PAL_protocol(first_run: bool, num_cells: int = 44, input_chemicals 
         for j in range(1, 16):
             tube_rack_cells.append(string.ascii_uppercase[i] + str(j))
 
-    protocol = PAL_protocol_types.PALprotocol(
+    protocol = PAL_protocol_types.PALProtocol(
         name=name,
         units="ul",
         trays={
